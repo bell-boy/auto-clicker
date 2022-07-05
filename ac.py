@@ -22,7 +22,7 @@ def clicker(amount, freq, pos_x, pos_y):
     for i in range(amount):
         mouse.move(pos_x, pos_y)
         mouse.click()
-        time.sleep(amount)
+        time.sleep(freq)
 
 corner = threading.Thread(target=clicker, args=(count, 5, 946, 631))
 corner.start()
