@@ -1,6 +1,13 @@
 import mouse
 import time
 import threading
+import keyboard
+import os
+
+def halt():
+    os._exit(0)
+
+keyboard.add_hotkey("alt+k", callback=halt)
 
 count = input("please enter a repeating count: ")
 if count == "indef":
@@ -13,7 +20,11 @@ time.sleep(5)
 
 def clicker(amount, freq, pos_x, pos_y):
     for i in range(amount):
-		mouse.move(pos_x, pos_y)
+        mouse.move(pos_x, pos_y)
         mouse.click()
         time.sleep(amount)
 
+corner = threading.Thread(target=clicker, args=(count, 5, 946, 631))
+corner.start()
+middle = threading.Thread(target=clicker, args=(count, 5, 307, 404))
+middle.start()
