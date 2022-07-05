@@ -2,7 +2,11 @@ import mouse
 import time
 import threading
 
-count = int(input("please enter a repeating count: "))
+count = input("please enter a repeating count: ")
+if count == "indef":
+	count = 1000000000000
+else:
+	count = int(count)
 prep_delay = int(input("please enter your prep delay: "))
 
 time.sleep(5)
